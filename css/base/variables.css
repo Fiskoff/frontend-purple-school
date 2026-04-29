@@ -1,0 +1,21 @@
+@layer base {
+
+    :root {
+        --font-family: 'Fira Sans', system-ui, sans-serif;
+        --font-family-logo: 'Montserrat Alternates', system-ui, sans-serif;
+        --color-text: #FAFAFA;
+        --lh-tight: 1.2;
+        --lh-base: 1.5;
+
+        --to-rem: calc(1rem / 16px);
+        --fs-h1: calc(46 * var(--to-rem));
+        --fs-h2: calc(36 * var(--to-rem));
+        --fs-h3: calc(24 * var(--to-rem));
+        --fs-p: calc(16 * var(--to-rem));
+        --fs-a: calc(18 * var(--to-rem));
+
+
+        --color-bg-standard: #121217;
+        --color-bg-primary: #1E1F29;
+    }  
+}

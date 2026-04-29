@@ -1,0 +1,37 @@
+@layer layout {
+
+    .hero {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 50px;
+    }
+
+    .hero__img {
+        min-width: 460px;
+        min-height: 260px;
+        
+    }
+
+    .hero-title {
+        margin-bottom: 32px;
+    }
+
+    .title__gradient {
+        background: linear-gradient(90deg, #D77BE5, #6C38CC);
+        background-clip: text;
+        color: transparent;
+    }
+
+    .hero__btns {
+        display: flex;
+        gap: 32px;
+    }
+
+    .hero__btns button {
+        padding: 16px 32px;
+        border: #4D5064 solid 1px;
+        border-radius: 10px;
+    }
+    
+}

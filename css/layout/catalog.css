@@ -1,0 +1,32 @@
+@layer layout {
+
+    .catalog {
+        padding-top: 100px;
+    }
+
+    .catalog p {
+        color: #E47AD5;
+        margin-bottom: 8px;
+    }
+
+    .catalog h1 {
+        color: #FAFAFA;
+        font-size: 46px;
+        line-height: 1.2;
+        margin-bottom: 48px;
+    }
+
+    .catalog ul {
+        display: flex;
+        gap: 24px;
+        margin-bottom: 32px;
+    }
+
+    .catalog button {
+        color: #FAFAFA;
+        font-size: 18px;
+        padding: 8px 16px;
+        border: #4D5064 solid 1px;
+        border-radius: 10px;
+    }
+}

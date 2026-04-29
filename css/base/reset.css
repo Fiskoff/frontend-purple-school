@@ -1,0 +1,63 @@
+@layer base {
+  /* 1. Блочная модель для всех элементов и псевдоэлементов */
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
+
+  /* 2. Сброс отступов у структурных элементов */
+  body,
+  h1, h2, h3, h4, h5, h6,
+  p, figure, blockquote, dl, dd {
+    margin: 0;
+  }
+
+  /* 3. Списки без маркеров и стандартных отступов */
+  ul, ol {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  /* 4. Безопасная база для body */
+  body {
+    min-height: 100vh;
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  /* 5. Адаптивные медиа-элементы */
+  img, picture, video, canvas, svg {
+    display: block;
+    max-width: 100%;
+    height: auto;
+  }
+
+  /* 6. Формы наследуют шрифт и цвет от родителя */
+  input, button, textarea, select {
+    font: inherit;
+    color: inherit;
+  }
+
+  /* 7. Кнопки и ссылки без дефолтных стилей браузера */
+  button {
+    cursor: pointer;
+    background: none;
+    border: none;
+    padding: 0;
+  }
+
+  a {
+    text-decoration: none;
+    color: inherit;
+  }
+
+  /* 8. Плавная прокрутка только при отсутствии настроек доступности */
+  @media (prefers-reduced-motion: no-preference) {
+    html {
+      scroll-behavior: smooth;
+    }
+  }
+}

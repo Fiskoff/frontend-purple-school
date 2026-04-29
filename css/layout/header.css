@@ -1,0 +1,34 @@
+@layer layout {
+
+    .header {
+        margin-top: 40px;
+        margin-bottom: 100px;
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .header__nav {
+        display: flex;
+        gap: 50px;
+        align-items:center;
+        padding: 11.5px 0;
+    }
+
+    .header__btn{
+        border: #4D5064 1px, solid;
+        border-radius: 8px;
+        padding: 8px 16px ;
+    }
+
+    .header__auth{
+        display: flex;
+        align-items:center;
+        gap: 8px;
+        padding: 18.5px 0;
+    }
+
+    .header__auth img{
+        max-height: 24px;
+    }
+
+}

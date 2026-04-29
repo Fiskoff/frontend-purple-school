@@ -1,0 +1,17 @@
+@layer layout {
+
+  .container-bg-standard {
+    background-color: var(--color-bg-standard);
+  }
+
+  .container-bg-primary {
+    background-color: var(--color-bg-primary);
+  }
+
+  .container {
+    width: 100%;
+    max-width: 1200px;
+    margin-inline: auto;
+  }
+
+}

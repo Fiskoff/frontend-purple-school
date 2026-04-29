@@ -1,0 +1,5 @@
+@layer utilities {
+    .d-flex {display: flex;}
+    .bg-purple {background-color: #6C38CC; border: #6C38CC solid 1px;}
+    .m-24 {margin: 24px;}
+}
