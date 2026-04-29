@@ -1,5 +1,6 @@
 Макет сайта - https://www.figma.com/design/7KDxobww8bmdTb1FhKJUyM/09---HTML-и-CSS?node-id=2-1063&p=f
 
+```text
 landing/
 ├── index.html
 ├── css/
@@ -14,6 +15,7 @@ landing/
 ├── img/                      # WebP/AVIF + fallback
 ├── fonts/                    # Локальные шрифты (woff2)
 └── js/                       # (опционально) минимальный скрипт для меню/анимаций
+```
 
 Общий принцип архитектуры
 
@@ -24,12 +26,12 @@ landing/
 Файл main.css собирает всё воедино через явные импорты или современные CSS-слои, фиксируя порядок загрузки вне зависимости от структуры папок.
 
 ```css
-    @layer base, layout, components, utilities;
-    @import url('./base/variables.css') layer(base);
-    @import url('./base/reset.css') layer(base);
-    @import url('./layout/container.css') layer(layout);
-    @import url('./components/button.css') layer(components);
-    @import url('./utilities/spacing.css') layer(utilities);
+@layer base, layout, components, utilities;
+@import url('./base/variables.css') layer(base);
+@import url('./base/reset.css') layer(base);
+@import url('./layout/container.css') layer(layout);
+@import url('./components/button.css') layer(components);
+@import url('./utilities/spacing.css') layer(utilities);
 ```
 
 Такой синтаксис заставляет браузер применять правила строго в заданной последовательности, полностью устраняя зависимость от того, в каком порядке файлы физически находятся в проекте.
@@ -40,13 +42,13 @@ Base (базовые стили)
 
 ```css
 /* variables.css */
-    :root { --color-bg: #ffffff; --text-primary: #0f172a; --space-unit: 0.25rem; }
+:root { --color-bg: #ffffff; --text-primary: #0f172a; --space-unit: 0.25rem; }
 
 /* reset.css + typography.css */
-    *, *::before, *::after { box-sizing: border-box; }
-    body { margin: 0; font-family: system-ui, sans-serif; line-height: 1.5; color: var(--text-primary); background: var(--color-bg); }
+*, *::before, *::after { box-sizing: border-box; }
+body { margin: 0; font-family: system-ui, sans-serif; line-height: 1.5; color: var(--text-primary); background: var(--color-bg); }
 
-    h1, h2, h3 { margin-block: 0; font-weight: 700; line-height: 1.2; }
+h1, h2, h3 { margin-block: 0; font-weight: 700; line-height: 1.2; }
 ```
 
 Переменные работают как дизайн-токены: меняя одно значение в :root, вы автоматически обновляете всю тему.
@@ -56,10 +58,10 @@ Layout (макет)
 Отвечает за расположение крупных блоков и адаптивную сетку, не затрагивая внутренний контент или декоративные стили.
 
 ```css
-    .container { width: 100%; max-width: 1200px; margin-inline: auto; padding-inline: calc(var(--space-unit) * 8); }
-    .header { display: flex; justify-content: space-between; align-items: center; }
-    .page-grid { display: grid; grid-template-columns: 260px 1fr; gap: calc(var(--space-unit) * 8); }
-    @media (max-width: 768px) { .page-grid { grid-template-columns: 1fr; } }
+.container { width: 100%; max-width: 1200px; margin-inline: auto; padding-inline: calc(var(--space-unit) * 8); }
+.header { display: flex; justify-content: space-between; align-items: center; }
+.page-grid { display: grid; grid-template-columns: 260px 1fr; gap: calc(var(--space-unit) * 8); }
+@media (max-width: 768px) { .page-grid { grid-template-columns: 1fr; } }
 ```
 
 Макетные классы управляют только геометрией и потоком документа. Они не содержат цветов, шрифтов или теней, что гарантирует их безопасное переиспользование на любых страницах.
@@ -69,9 +71,9 @@ Components (компоненты)
 Независимые UI-элементы, которые выглядят одинаково в любом контексте и управляются через модификаторы. Они не знают, где их разместят, поэтому опираются только на свои переменные и избегают вложенных селекторов вроде header .button.
 
 ```css
-    .button { display: inline-flex; align-items: center; padding: 0.75rem 1.5rem; border: 1px solid transparent; border-radius: 0.5rem; font-weight: 500; cursor: pointer; transition: background 0.2s; }
-    .button--primary { background: var(--color-primary); color: #fff; }
-    .button--primary:hover { opacity: 0.9; }
+.button { display: inline-flex; align-items: center; padding: 0.75rem 1.5rem; border: 1px solid transparent; border-radius: 0.5rem; font-weight: 500; cursor: pointer; transition: background 0.2s; }
+.button--primary { background: var(--color-primary); color: #fff; }
+.button--primary:hover { opacity: 0.9; }
 ```
 
 Такой подход позволяет выносить компоненты в отдельные файлы или даже переиспользовать их между проектами, просто копируя папку и подключая зависимости.
@@ -81,11 +83,11 @@ Utilities (утилиты)
 Однофункциональные классы для быстрой стилизации без создания новых CSS-файлов. Они применяются в HTML напрямую, заменяют инлайн-стили и имеют минимальную специфичность.
 
 ```css
-    .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); }
-    .mt-4 { margin-top: calc(var(--space-unit) * 4); }
-    .text-center { text-align: center; }
-    .visible-lg { display: none; }
-    @media (min-width: 1024px) { .visible-lg { display: block; } }
+.sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); }
+.mt-4 { margin-top: calc(var(--space-unit) * 4); }
+.text-center { text-align: center; }
+.visible-lg { display: none; }
+@media (min-width: 1024px) { .visible-lg { display: block; } }
 ```
 
 Утилиты безопасны для наложения поверх компонентов. Если карточке нужен дополнительный отступ, вы просто добавляете .mt-4 в классы элемента, не залезая в CSS-файл карточки.
@@ -99,17 +101,17 @@ Utilities (утилиты)
 @layer — это нативный инструмент для явного управления приоритетом стилей. Вы один раз задаёте очерёдность слоёв, и браузер применяет правила строго по ней, полностью игнорируя вес селекторов. Поздний слой всегда перезаписывает ранний, даже если у того стоит #id или вложенность в три блока
 
 ```css
-    @layer reset, components, utils;
-    @layer reset { #header-title { font-size: 32px; } }
-    @layer utils  { .text-sm { font-size: 14px; } } /* .text-sm победит из-за порядка слоёв */
+@layer reset, components, utils;
+@layer reset { #header-title { font-size: 32px; } }
+@layer utils  { .text-sm { font-size: 14px; } } /* .text-sm победит из-за порядка слоёв */
 ```
 
 CSS-переменные — это кастомные свойства для хранения переиспользуемых значений. Они объявляются с двойным дефисом --, вызываются через var(), наследуются по DOM-дереву и вычисляются браузером в реальном времени. Позволяют менять тему, отступы или цвета без правки десятков файлов.
 
 ```css
-    :root { --accent: #2563eb; --unit: 8px; }
-    .btn { background: var(--accent, #ccc); padding: calc(var(--unit) * 2); }
-    .dark { --accent: #60a5fa; } /* значение меняется только внутри .dark */
+:root { --accent: #2563eb; --unit: 8px; }
+.btn { background: var(--accent, #ccc); padding: calc(var(--unit) * 2); }
+.dark { --accent: #60a5fa; } /* значение меняется только внутри .dark */
 ```
 
 В паре: @layer диктует в каком порядке применяются правила, а переменные определяют какие значения в них подставляются. Вместе они убирают !important, специфичные конфликты и зависимость от препроцессоров, оставляя чистый, предсказуемый CSS.
